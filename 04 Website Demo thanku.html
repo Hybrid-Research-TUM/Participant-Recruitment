@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Received | TU Munich</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- COPY OF YOUR MAIN THEME STYLES --- */
+        :root {
+            --color-bg: #0A0A0A;
+            --color-text: #F5F5F5;
+            --color-accent: #32CD32; /* Electric Lime */
+            --color-grey: #808080;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Button */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 9999px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px 0 var(--color-accent);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--color-text);
+            border: 1px solid var(--color-grey);
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* Fringe Elements */
+        .fringe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--color-grey);
+            letter-spacing: 0.1em;
+            border-right: 1px solid var(--color-grey);
+            z-index: 1000;
+            display: none; 
+        }
+        
+        @media (min-width: 1024px) {
+            .fringe { display: flex; }
+            main { margin-left: 50px; }
+        }
+        
+        .mobile-fringe {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--color-grey);
+            border-bottom: 1px solid var(--color-grey);
+        }
+
+        @media (min-width: 1024px) { .mobile-fringe { display: none; } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Fringe Element (Desktop) -->
+    <aside class="fringe">
+        A RESEARCH PROJECT BY: TECHNICAL UNIVERSITY OF MUNICH - CHAIR OF INTEGRATED PRODUCT DESIGN (IPD)
+    </aside>
+
+    <!-- Mobile Fringe (Mobile) -->
+    <div class="mobile-fringe">
+        TUM - CHAIR OF INTEGRATED PRODUCT DESIGN (IPD)
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col">
+        
+        <!-- Minimal Header -->
+        <header class="w-full bg-transparent z-50">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <a href="index.html" class="flex-shrink-0 flex items-center hover:opacity-80 transition-opacity">
+                        <span class="font-black text-2xl text-white">HYBRID:WORK</span>
+                        <span class="w-3 h-3 rounded-full ml-1" style="background-color: var(--color-accent);"></span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Success Message Section -->
+        <section class="flex-grow flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 -mt-20">
+            <div class="max-w-3xl">
+                <!-- Animated Checkmark Icon -->
+                <div class="scroll-animate mb-8 flex justify-center">
+                    <div class="w-24 h-24 rounded-full border-2 flex items-center justify-center" style="border-color: var(--color-accent);">
+                        <svg class="w-12 h-12" style="color: var(--color-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <h1 class="text-5xl sm:text-7xl font-black text-white leading-tight scroll-animate" style="transition-delay: 100ms;">
+                    Application<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Received.</span>
+                </h1>
+                
+                <p class="mt-8 text-xl text-gray-300 max-w-2xl mx-auto scroll-animate" style="transition-delay: 200ms;">
+                    Thank you for your interest in the Hybrid Work Study. We have received your details.
+                </p>
+
+                <div class="mt-4 p-6 bg-[#111] border border-gray-800 rounded-xl inline-block text-left scroll-animate" style="transition-delay: 300ms;">
+                    <h3 class="text-sm font-bold uppercase text-gray-500 mb-2">What happens next?</h3>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span style="color: var(--color-accent);">01.</span> We will review your application within 48 hours.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span style="color: var(--color-accent);">02.</span> You will receive an email with the consent form.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span style="color: var(--color-accent);">03.</span> Once signed, we will send you the app login details.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center scroll-animate" style="transition-delay: 400ms;">
+                    <a href="https://hybrid-research-tum.github.io/Participant-Recruitment/" class="btn-primary">Return to Home</a>
+                    <a href="mailto:hybridworkstudy@gmail.com" class="btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full py-8 text-center text-gray-600 text-sm border-t border-gray-900 mt-auto">
+            <p>&copy; 2025 Technical University of Munich</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple Fade-in Animation on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.scroll-animate');
+            elements.forEach(el => el.classList.add('is-visible'));
+        });
+    </script>
+</body>
+</html>
