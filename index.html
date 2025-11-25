@@ -426,105 +426,98 @@
 
         <!-- Apply Section -->
         <section id="apply" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div class="text-center scroll-animate">
-                <h2 class="text-4xl sm:text-5xl font-black">Apply to Participate</h2>
-                <p class="text-lg text-gray-300 mt-4">
-                    Interested in sharing your experience? Fill out the short form below to apply.
-                </p>
+    <div class="text-center scroll-animate">
+        <h2 class="text-4xl sm:text-5xl font-black">Apply to Participate</h2>
+        <p class="text-lg text-gray-300 mt-4">
+            Interested in sharing your experience? Fill out the short form below to apply.
+        </p>
+    </div>
+
+    <form 
+        id="apply-form" 
+        action="https://submit-form.com/YOUR_FORMSPARK_ID"
+        method="POST"
+        class="mt-12 space-y-6 scroll-animate"
+    >
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                <input type="text" name="Name" id="name" class="form-input" required>
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                <input type="email" name="Email" id="email" class="form-input" required>
+            </div>
+        </div>
+        <div>
+            <label for="role" class="block text-sm font-medium text-gray-300 mb-2">Your Role / Job Title</label>
+            <input type="text" name="Role" id="role" class="form-input" placeholder="e.g., UX Designer, Software Engineer" required>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+                <label for="location" class="block text-sm font-medium text-gray-300 mb-2">Where are you based?</label>
+                <select id="location" name="Location" class="form-select" required>
+                    <option value="" disabled selected>Select your continent</option>
+                    <option value="North America">North America</option>
+                    <option value="South America">South America</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Australia/Oceania">Australia/Oceania</option>
+                </select>
+            </div>
+            <div>
+                <label for="industry" class="block text-sm font-medium text-gray-300 mb-2">Which industry do you work in?</label>
+                <select id="industry" name="Industry" class="form-select" required>
+                    <option value="" disabled selected>Select your industry</option>
+                    <option value="Design & Creative Industries">Design & Creative Industries</option>
+                    <option value="Technology & Digital">Technology & Digital</option>
+                    <option value="Business & Professional Services">Business & Professional Services</option>
+                    <option value="Media & Content">Media & Content</option>
+                    <option value="Education & Research">Education & Research</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="space-y-4 pt-4">
+            <span class="block text-lg font-medium text-white mb-2">Confirmation</span>
+            
+            <div class="custom-checkbox">
+                <input type="checkbox" id="check-age" name="Confirmation_18_or_older" value="Yes" class="required-check">
+                <span class="checkbox-visual">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <label for="check-age">Do you confirm you are 18 or older?</label>
             </div>
 
-            <form 
-                id="apply-form" 
-                action="https://submit-form.com/JhqDT3WNB"
-                method="POST"
-                class="mt-12 space-y-6 scroll-animate"
-            >
-            </form>
-            
-                <!-- Form Fields -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                        <input type="text" name="Name" id="name" class="form-input" required>
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                        <input type="email" name="Email" id="email" class="form-input" required>
-                    </div>
-                </div>
-                <div>
-                    <label for="role" class="block text-sm font-medium text-gray-300 mb-2">Your Role / Job Title</label>
-                    <input type="text" name="Role" id="role" class="form-input" placeholder="e.g., UX Designer, Software Engineer" required>
-                </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" id="check-diary" name="Confirmation_Diary_Availability" value="Yes" class="required-check">
+                <span class="checkbox-visual">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <label for="check-diary">Are you available to participate in a 5-day mobile diary between December and January?</label>
+            </div>
 
-                <!-- Dropdowns -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                        <label for="location" class="block text-sm font-medium text-gray-300 mb-2">Where are you based?</label>
-                        <select id="location" name="Location" class="form-select" required>
-                            <option value="" disabled selected>Select your continent</option>
-                            <option value="North America">North America</option>
-                            <option value="South America">South America</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Africa">Africa</option>
-                            <option value="Asia">Asia</option>
-                            <option value="Australia/Oceania">Australia/Oceania</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="industry" class="block text-sm font-medium text-gray-300 mb-2">Which industry do you work in?</label>
-                        <select id="industry" name="Industry" class="form-select" required>
-                            <option value="" disabled selected>Select your industry</option>
-                            <option value="Design & Creative Industries">Design & Creative Industries</option>
-                            <option value="Technology & Digital">Technology & Digital</option>
-                            <option value="Business & Professional Services">Business & Professional Services</option>
-                            <option value="Media & Content">Media & Content</option>
-                            <option value="Education & Research">Education & Research</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" id="check-interview" name="Confirmation_Interview_Willingness" value="Yes" class="required-check">
+                <span class="checkbox-visual">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <label for="check-interview">Are you willing to participate in a 60-minute online interview?</label>
+            </div>
+        </div>
 
-                <!-- Checkboxes -->
-                <div class="space-y-4 pt-4">
-                    <span class="block text-lg font-medium text-white mb-2">Confirmation</span>
-                    
-                    <div class="custom-checkbox">
-                        <input type="checkbox" id="check-age" name="Confirmation_18_or_older" value="Yes" class="required-check">
-                        <span class="checkbox-visual">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
-                        <label for="check-age">Do you confirm you are 18 or older?</label>
-                    </div>
-
-                    <div class="custom-checkbox">
-                        <input type="checkbox" id="check-diary" name="Confirmation_Diary_Availability" value="Yes" class="required-check">
-                        <span class="checkbox-visual">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
-                        <label for="check-diary">Are you available to participate in a 5-day mobile diary between December and January?</label>
-                    </div>
-
-                    <div class="custom-checkbox">
-                        <input type="checkbox" id="check-interview" name="Confirmation_Interview_Willingness" value="Yes" class="required-check">
-                        <span class="checkbox-visual">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </span>
-                        <label for="check-interview">Are you willing to participate in a 60-minute online interview?</label>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="pt-6">
-                    <button type="submit" id="submit-btn" class="btn-submit" disabled>
-                        Submit Application
-                    </button>
-                    <p class="text-xs text-gray-500 mt-3 text-center">
-                        We'll email you the official consent form and details shortly.
-                    </p>
-                </div>
-            </form>
-        </section>
+        <div class="pt-6">
+            <button type="submit" id="submit-btn" class="btn-submit" disabled>
+                Submit Application
+            </button>
+            <p class="text-xs text-gray-500 mt-3 text-center">
+                We'll email you the official consent form and details shortly.
+            </p>
+        </div>
+    </form> </section>
 
         <!-- Footer -->
         <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -600,5 +593,6 @@
 
 </body>
 </html>
+
 
 
