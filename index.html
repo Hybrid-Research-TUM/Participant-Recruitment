@@ -9,15 +9,17 @@
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Custom CSS for Avant-Garde Theme */
+        /* --- Swiss Architectural / Academic Theme --- */
         :root {
-            --color-bg: #0A0A0A;
-            --color-text: #F5F5F5;
-            --color-accent: #32CD32; /* Electric Lime */
-            --color-grey: #808080;
+            --color-bg: #FFFFFF;
+            --color-bg-secondary: #F3F4F6; /* Light gray for contrast */
+            --color-text: #111111;
+            --color-text-muted: #6B7280;
+            --color-accent: #0065BD; /* TUM Blue */
+            --color-border: #E5E7EB;
         }
 
         body {
@@ -25,44 +27,21 @@
             background-color: var(--color-bg);
             color: var(--color-text);
             overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Grid Layout Background --- */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+                              linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
         }
 
         /* --- Animations --- */
-
-        /* Marquee */
-        .marquee {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            box-sizing: border-box;
-            border-top: 1px solid var(--color-grey);
-            border-bottom: 1px solid var(--color-grey);
-        }
-
-        .marquee-content {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 30s linear infinite;
-        }
-
-        .marquee-content span {
-            font-size: 1.25rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin: 0 2rem;
-            color: var(--color-accent);
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Fade-in on Scroll */
         .scroll-animate {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             will-change: opacity, transform;
         }
 
@@ -71,105 +50,115 @@
             transform: translateY(0);
         }
 
+        /* --- Typography Details --- */
+        h1, h2, h3, .big-number {
+            letter-spacing: -0.04em; /* Tight tracking for Swiss style */
+        }
+
         /* --- Components --- */
         
         /* Button */
         .btn-primary {
             display: inline-block;
             background-color: var(--color-accent);
-            color: var(--color-bg);
-            padding: 0.75rem 1.5rem;
-            font-weight: 700;
+            color: #FFFFFF;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            border-radius: 9999px; /* rounded-full */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            letter-spacing: 0.05em;
+            border-radius: 0; /* Sharp edges for architectural feel */
+            transition: all 0.2s ease;
             text-decoration: none;
+            border: 1px solid var(--color-accent);
         }
 
         .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px 0 var(--color-accent);
+            background-color: transparent;
+            color: var(--color-accent);
         }
 
         /* Submit Button */
         .btn-submit {
-            background-color: var(--color-accent);
-            color: var(--color-bg);
-            padding: 0.75rem 1.5rem;
-            font-weight: 700;
+            background-color: var(--color-text);
+            color: #FFFFFF;
+            padding: 1rem 2rem;
+            font-weight: 600;
             text-transform: uppercase;
-            border-radius: 9999px;
-            transition: all 0.3s ease;
+            border-radius: 0;
+            transition: all 0.2s ease;
             width: 100%;
-            border: none;
+            border: 1px solid var(--color-text);
             cursor: pointer;
         }
 
-        .btn-submit:disabled {
-            background-color: var(--color-grey);
-            color: #4a4a4a;
-            cursor: not-allowed;
-            opacity: 0.5;
+        .btn-submit:hover:not(:disabled) {
+            background-color: transparent;
+            color: var(--color-text);
         }
 
-        /* Custom Form Inputs */
+        .btn-submit:disabled {
+            background-color: #E5E7EB;
+            border-color: #E5E7EB;
+            color: #9CA3AF;
+            cursor: not-allowed;
+        }
+
+        /* Forms */
         .form-input, .form-select {
-            background-color: #1a1a1a;
-            border: 1px solid var(--color-grey);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
             color: var(--color-text);
-            border-radius: 0.5rem; /* rounded-lg */
-            padding: 0.75rem;
+            border-radius: 0; /* Sharp corners */
+            padding: 0.875rem;
             width: 100%;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s ease;
         }
 
         .form-input:focus, .form-select:focus {
             outline: none;
             border-color: var(--color-accent);
-            box-shadow: 0 0 0 2px var(--color-accent);
-        }
-
-        .form-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2332CD32' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.75rem center;
-            background-size: 1.25em;
+            box-shadow: 0 0 0 3px rgba(0, 101, 189, 0.1);
         }
 
         /* Custom Checkbox */
         .custom-checkbox {
             display: grid;
             grid-template-columns: auto 1fr;
-            gap: 0.75rem;
-            align-items: center;
+            gap: 1rem;
+            align-items: start;
             cursor: pointer;
+            padding: 1rem;
+            border: 1px solid transparent;
+            transition: background-color 0.2s;
+        }
+
+        .custom-checkbox:hover {
+            background-color: #F9FAFB;
         }
 
         .custom-checkbox input[type="checkbox"] {
-            opacity: 0;
-            width: 0;
-            height: 0;
-            position: absolute;
+            display: none;
         }
 
         .custom-checkbox .checkbox-visual {
-            width: 1.5rem;
-            height: 1.5rem;
-            border: 2px solid var(--color-grey);
-            border-radius: 0.25rem; /* rounded */
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid #9CA3AF;
+            background-color: #FFF;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            background-color: #1a1a1a;
+            transition: all 0.2s ease;
+            margin-top: 0.15rem;
         }
         
         .custom-checkbox .checkbox-visual svg {
             opacity: 0;
-            transform: scale(0.5);
-            transition: all 0.3s ease;
-            stroke: var(--color-accent);
+            transform: scale(0.8);
+            transition: all 0.2s ease;
+            stroke: #FFF;
         }
 
         .custom-checkbox input[type="checkbox"]:checked + .checkbox-visual {
@@ -180,367 +169,390 @@
         .custom-checkbox input[type="checkbox"]:checked + .checkbox-visual svg {
             opacity: 1;
             transform: scale(1);
-            stroke: var(--color-bg);
-        }
-
-        .custom-checkbox input[type="checkbox"]:focus + .checkbox-visual {
-            box-shadow: 0 0 0 2px var(--color-accent);
         }
         
         .custom-checkbox label {
             cursor: pointer;
-            color: var(--color-grey);
-            transition: color 0.3s ease;
-        }
-        
-        .custom-checkbox:hover label {
             color: var(--color-text);
-        }
-        
-        .custom-checkbox input[type="checkbox"]:checked ~ label {
-             color: var(--color-text);
+            font-size: 0.95rem;
         }
 
-
-        /* --- Fringe --- */
+        /* --- Fringe / Sidebar --- */
         .fringe {
             position: fixed;
             top: 0;
             left: 0;
             height: 100vh;
-            width: 50px; /* Adjust width as needed */
+            width: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             writing-mode: vertical-rl;
             transform: rotate(180deg);
             text-transform: uppercase;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--color-grey);
-            letter-spacing: 0.1em;
-            border-right: 1px solid var(--color-grey);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            letter-spacing: 0.15em;
+            background-color: #FFFFFF;
+            border-right: 1px solid var(--color-border);
             z-index: 1000;
-            display: none; /* Hidden on mobile */
+            display: none;
         }
         
-        @media (min-width: 1024px) { /* lg */
+        @media (min-width: 1024px) {
             .fringe {
                 display: flex;
             }
             main {
-                margin-left: 50px; /* Offset content */
+                margin-left: 60px;
             }
-        }
-        
-        .mobile-fringe {
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--color-grey);
-            border-bottom: 1px solid var(--color-grey);
         }
 
-        @media (min-width: 1024px) {
-            .mobile-fringe {
-                display: none;
-            }
+        /* --- Section Styling --- */
+        .section-divider {
+            border-top: 1px solid var(--color-border);
+        }
+
+        .card-architectural {
+            background: #FFF;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-architectural:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            border-color: var(--color-accent);
         }
 
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-grid">
 
-    <!-- Fringe Element (Desktop) -->
+    <!-- Sidebar (Desktop) -->
     <aside class="fringe">
-        A RESEARCH PROJECT BY: TECHNICAL UNIVERSITY OF MUNICH - CHAIR OF INTEGRATED PRODUCT DESIGN (IPD)
+        TUM SCHOOL OF ENGINEERING AND DESIGN — IPD
     </aside>
 
-    <!-- Mobile Fringe (Mobile) -->
-    <div class="mobile-fringe">
-        TUM - CHAIR OF INTEGRATED PRODUCT DESIGN (IPD)
+    <!-- Mobile Header/Fringe -->
+    <div class="lg:hidden border-b border-gray-200 bg-white p-4 text-center text-xs font-bold tracking-widest uppercase text-gray-500">
+        TUM — Integrated Product Design
     </div>
 
     <!-- Main Content -->
     <main>
-        <!-- Header -->
-        <header class="w-full sticky top-0 bg-black/50 backdrop-blur-md z-50">
-            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Navigation -->
+        <nav class="sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="flex justify-between items-center h-20">
-                    <div class="flex-shrink-0 flex items-center">
-                        <span class="font-black text-2xl text-white">HYBRID:WORK</span>
-                        <span class="w-3 h-3 bg-accent rounded-full ml-1" style="background-color: var(--color-accent);"></span>
+                    <div class="flex items-center gap-3">
+                        <!-- TUM Logo Placeholder / Simple Text Brand -->
+                        <div class="bg-[var(--color-accent)] text-white font-bold text-lg px-2 py-1">TUM</div>
+                        <span class="font-bold text-xl tracking-tight text-gray-900">HYBRID:WORK</span>
                     </div>
-                    <a href="#apply" class="btn-primary">Apply Now</a>
+                    <a href="#apply" class="hidden sm:inline-block text-sm font-bold uppercase tracking-wide text-gray-500 hover:text-[var(--color-accent)] transition-colors">
+                        Participant Application &rarr;
+                    </a>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
 
         <!-- Hero Section -->
-        <section class="min-h-[80vh] flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-20">
-            <div class="max-w-4xl">
-                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 leading-tight scroll-animate">
-                    Shape the Future of Hybrid Work.
-                </h1>
-                <p class="mt-8 text-xl sm:text-2xl text-gray-300 max-w-2xl mx-auto scroll-animate" style="transition-delay: 150ms;">
-                    Participate in a design study exploring the new frontiers of remote collaboration and digital well-being.
-                </p>
-                <a href="#apply" class="btn-primary mt-12 scroll-animate" style="transition-delay: 300ms;">Become a Participant</a>
-            </div>
-        </section>
-
-        <!-- Marquee Section -->
-        <section class="py-8 my-16">
-            <div class="marquee">
-                <div class="marquee-content">
-                    <span>REMOTE</span>
-                    <span>HYBRID</span>
-                    <span>GLOBAL</span>
-                    <span>DESIGN STUDY</span>
-                    <span>WELL-BEING</span>
-                    <span>CREATIVE SPACES</span>
-                    <span>PRODUCTIVITY</span>
-                    <span>FUTURE OF WORK</span>
-                    <span>REMOTE</span>
-                    <span>HYBRID</span>
-                    <span>GLOBAL</span>
-                    <span>DESIGN STUDY</span>
-                    <span>WELL-BEING</span>
-                    <span>CREATIVE SPACES</span>
-                    <span>PRODUCTIVITY</span>
-                    <span>FUTURE OF WORK</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Collaboration Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-b border-gray-900">
-             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                <div class="scroll-animate">
-                    <span class="text-sm font-bold uppercase" style="color: var(--color-accent);">The Collaboration</span>
-                    <h2 class="text-4xl sm:text-5xl font-black mt-2 leading-tight">TUM x<br>Never Too Small</h2>
-                    <p class="text-lg text-gray-300 mt-6 font-light">
-                        This study is a joint initiative between the <strong>Chair of Integrated Product Design at the Technical University of Munich</strong> and the global media platform <strong>Never Too Small</strong>.
+        <section class="min-h-[85vh] flex items-center px-6 lg:px-12 py-20 bg-white relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-1/3 h-full border-l border-gray-100 hidden lg:block"></div>
+            
+            <!-- Wrapper to ensure alignment on large screens -->
+            <div class="w-full max-w-7xl mx-auto">
+                <div class="max-w-4xl relative z-10">
+                    <div class="inline-block border border-[var(--color-accent)] text-[var(--color-accent)] px-3 py-1 text-xs font-bold uppercase tracking-wider mb-6 scroll-animate">
+                        Winter 2025 / 2026
+                    </div>
+                    <h1 class="text-6xl sm:text-7xl lg:text-9xl font-black text-gray-900 leading-[0.9] tracking-tighter scroll-animate" style="transition-delay: 100ms;">
+                        THE FUTURE<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-blue-400">OF THE HOME</span><br>
+                        OFFICE.
+                    </h1>
+                    <p class="mt-10 text-xl text-gray-600 max-w-2xl leading-relaxed font-light scroll-animate" style="transition-delay: 200ms;">
+                        A study on space, reluctance, and well-being by the <strong>Technical University of Munich</strong> in collaboration with <strong>Never Too Small</strong>.
                     </p>
-                    <p class="text-lg text-gray-300 mt-4 font-light">
-                        Together, we are bridging the gap between academic rigor and architectural inspiration. We aim to understand how small, flexible spaces can be designed to support mental well-being and productivity in the hybrid era.
-                    </p>
-                </div>
-                
-                <div class="bg-[#111] p-8 rounded-none border-l-4 border-[var(--color-accent)] scroll-animate" style="transition-delay: 150ms;">
-                    <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Building on Previous Research</span>
-                    <h3 class="text-2xl font-bold mt-2 text-white">The Scientific "Tiny Homeoffice"</h3>
-                    <p class="text-gray-400 mt-4 leading-relaxed">
-                        This study follows our Summer 2024 project, where we applied principles of neuroaesthetics and architectural psychology to design furniture for micro-living environments.
-                    </p>
-                    <div class="mt-6">
-                        <a href="https://www.arc.ed.tum.de/ipd/teaching/summer-2024/ipd-project-tiny-homeoffice/" target="_blank" class="text-link text-sm font-bold uppercase tracking-wide flex items-center gap-2">
-                            Explore the "Tiny Homeoffice" Project
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    
+                    <div class="mt-12 flex flex-col sm:flex-row gap-6 scroll-animate" style="transition-delay: 300ms;">
+                        <a href="#apply" class="btn-primary">Become a Participant</a>
+                        <a href="#details" class="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-gray-500 hover:text-gray-900 transition-colors px-4 py-3">
+                            Read Prospectus
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                         </a>
                     </div>
                 </div>
-             </div>
-        </section>
-
-        <!-- What We Do Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="scroll-animate">
-                    <span class="text-sm font-bold uppercase" style="color: var(--color-accent);">The Research</span>
-                    <h2 class="text-4xl sm:text-5xl font-black mt-2">What Are We Studying?</h2>
-                    <p class="text-lg text-gray-300 mt-6">
-                        We're researchers from the Technical University of Munich. We are investigating how remote and hybrid professionals manage their work, environment, and digital tools.
-                    </p>
-                    <p class="text-lg text-gray-300 mt-4">
-                        Your insights will directly influence the design of next-generation tools that promote better balance, focus, and collaboration for remote teams.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-6 scroll-animate" style="transition-delay: 150ms;">
-                    <!-- Icon Card 1 -->
-                    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800">
-                        <svg class="w-10 h-10 mb-4" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
-                        <h3 class="text-xl font-bold">Workspace & Productivity</h3>
-                        <p class="text-gray-400 mt-2">Exploring the connection between your physical setup and your ability to get things done.</p>
-                    </div>
-                    <!-- Icon Card 2 -->
-                    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800">
-                        <svg class="w-10 h-10 mb-4" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.5 21.5l4.5-.838A9.955 9.955 0 0 0 12 22z"/></svg>
-                        <h3 class="text-xl font-bold">The Personal Touch</h3>
-                        <p class="text-gray-400 mt-2">How you make a space your own, from meaningful objects to the hidden contents of your desk.</p>
-                    </div>
-                    <!-- Icon Card 3 -->
-                    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800">
-                        <svg class="w-10 h-10 mb-4" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        <h3 class="text-xl font-bold">Space in Action</h3>
-                        <p class="text-gray-400 mt-2">A look at how your environment supports—or hinders—the specific activities you do every day.</p>
-                    </div>
-                    <!-- Icon Card 4 -->
-                    <div class="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800">
-                        <svg class="w-10 h-10 mb-4" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6V2h-6zM2.5 16v6h6v-6h-6zM15.5 2v6h6V2h-6zM15.5 16v6h6v-6h-6z"/><path d="M4 8v4M17 8v4M4 20v-4M17 20v-4M8 4h4M8 17h4M20 4h-4M20 17h-4"/></svg>
-                        <h3 class="text-xl font-bold">Comfort & Adaptations</h3>
-                        <p class="text-gray-400 mt-2">The sensory experience of your workspace and the "hacks" or upgrades you've made to make it truly work for you.</p>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- What's Involved Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div class="text-center max-w-3xl mx-auto scroll-animate">
-                <span class="text-sm font-bold uppercase" style="color: var(--color-accent);">Your Commitment</span>
-                <h2 class="text-4xl sm:text-5xl font-black mt-2">What's Involved?</h2>
-                <p class="text-lg text-gray-300 mt-4">
-                    The study consists of two simple, remote-friendly parts. We value your time and insights.
-                </p>
+        <!-- Marquee / Ticker -->
+        <div class="border-y border-gray-200 bg-gray-50 overflow-hidden py-3">
+            <div class="flex whitespace-nowrap gap-12 text-sm font-mono text-gray-500 uppercase tracking-widest animate-marquee">
+                <!-- Using simple marquee animation logic via Tailwind arbitrary values would be complex, keeping simple CSS in style tag was smart. But here we can just repeat content. -->
+                <div class="flex gap-12 min-w-full justify-around">
+                     <span>REMOTE</span> <span>/</span> 
+                     <span>Hybrid Work</span> <span>/</span> 
+                     <span>Global</span> <span>/</span> 
+                     <span>Design Study</span> <span>/</span> 
+                     <span>Well-being</span> <span>/</span> 
+                     <span>Creative Spaces</span> <span>/</span> 
+                     <span>Productivity</span> <span>/</span> 
+                     <span>Future of Work</span> <span>/</span> 
+                </div>
             </div>
-            
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Card 1: Mobile Diary -->
-                <div class="bg-[#1a1a1a] p-8 rounded-xl border border-gray-800 relative overflow-hidden scroll-animate">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-10" style="background-color: var(--color-accent);"></div>
-                    <div class="relative z-10">
-                        <span class="text-5xl font-black" style="color: var(--color-accent);">01.</span>
-                        <h3 class="text-3xl font-bold mt-4">5-Day Mobile Diary</h3>
-                        <p class="text-lg text-gray-300 mt-4">
-                            For 5 working days, you'll receive 1 online survey per day asking about your work moments. This is flexible and takes only 5-10 minutes each time.
+        </div>
+
+        <!-- Intro / Collaboration -->
+        <section id="details" class="px-6 lg:px-12 py-32 bg-white">
+            <div class="max-w-7xl mx-auto">
+                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                    <!-- Left Column (Title) -->
+                    <div class="lg:col-span-4 scroll-animate">
+                        <h2 class="text-4xl font-bold tracking-tight mb-6">A Study on Space & Reluctance</h2>
+                        <div class="h-1 w-20 bg-[var(--color-accent)]"></div>
+                    </div>
+                    
+                    <!-- Right Column (Content) -->
+                    <div class="lg:col-span-8 space-y-8 text-lg text-gray-600 font-light scroll-animate" style="transition-delay: 150ms;">
+                        <p>
+                            <strong>We are studying the reality of hybrid work—the good, the bad, and the glitchy.</strong> We specifically want to understand why many professionals prefer home offices over corporate spaces.
                         </p>
-                        <p class="text-lg text-gray-400 mt-2"><strong>When:</strong> December - January</p>
-                    </div>
-                </div>
-                <!-- Card 2: Interview -->
-                <div class="bg-[#1a1a1a] p-8 rounded-xl border border-gray-800 relative overflow-hidden scroll-animate" style="transition-delay: 150ms;">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-10" style="background-color: var(--color-accent);"></div>
-                    <div class="relative z-10">
-                        <span class="text-5xl font-black" style="color: var(--color-accent);">02.</span>
-                        <h3 class="text-3xl font-bold mt-4">60-Minute Interview</h3>
-                        <p class="text-lg text-gray-300 mt-4">
-                            A one-hour, casual online video call to discuss your diary entries and dive deeper into your experiences. We'll schedule this at your convenience.
+                        <p>
+                            Motivated by data indicating that 60% of remote-capable workers specifically prefer a hybrid arrangement, this research examines which aspects of the office are rejected as dysfunctional or unappealing.
                         </p>
-                        <p class="text-lg text-gray-400 mt-2"><strong>When:</strong> After the diary study</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
+                             <div class="p-6 bg-gray-50 border border-gray-100">
+                                 <div class="text-sm font-bold text-[var(--color-accent)] uppercase mb-2">Lead Partner</div>
+                                 <div class="font-bold text-xl text-gray-900">Technical University of Munich</div>
+                                 <div class="text-sm text-gray-500 mt-1">Chair of Integrated Product Design</div>
+                             </div>
+                             <div class="p-6 bg-gray-50 border border-gray-100">
+                                 <div class="text-sm font-bold text-[var(--color-accent)] uppercase mb-2">Media Partner</div>
+                                 <div class="font-bold text-xl text-gray-900">Never Too Small</div>
+                                 <div class="text-sm text-gray-500 mt-1">Global Media Platform</div>
+                             </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Procedure / Timeline -->
+        <section class="bg-[var(--color-bg-secondary)] px-6 lg:px-12 py-32 border-t border-gray-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-20 scroll-animate">
+                    <div>
+                        <span class="font-mono text-sm text-[var(--color-accent)]">01. PROCEDURE</span>
+                        <h2 class="text-4xl sm:text-5xl font-black text-gray-900 mt-2 tracking-tight">Timeline & Expectations</h2>
+                    </div>
+                    <p class="text-gray-500 max-w-sm mt-6 md:mt-0">
+                        To respect your time, we have structured the study into three distinct phases. Total active time commitment is minimal.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Phase 1 -->
+                    <div class="card-architectural p-8 scroll-animate">
+                        <span class="block text-6xl font-black text-gray-200 mb-6">I</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Registration</h3>
+                        <p class="text-gray-600 text-sm mb-4">Complete the brief application form below.</p>
+                        <div class="text-xs font-mono text-gray-400 uppercase border-t border-gray-100 pt-4">Status: Open</div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="card-architectural p-8 scroll-animate" style="transition-delay: 100ms;">
+                        <span class="block text-6xl font-black text-gray-200 mb-6">II</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Onboarding</h3>
+                        <p class="text-gray-600 text-sm mb-4">Receive unique ID (e.g., HR_001) for 100% anonymity.</p>
+                        <div class="text-xs font-mono text-gray-400 uppercase border-t border-gray-100 pt-4">Status: Upcoming</div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="card-architectural p-8 border-l-4 border-l-[var(--color-accent)] scroll-animate" style="transition-delay: 200ms;">
+                        <span class="block text-6xl font-black text-[var(--color-accent)] opacity-20 mb-6">III</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">The Study</h3>
+                        <p class="text-gray-600 text-sm mb-4">5-Day Mobile Diary (10 min/day) + One 60 min interview.</p>
+                        <div class="text-xs font-mono text-[var(--color-accent)] uppercase border-t border-gray-100 pt-4 font-bold">Dec — Jan</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Apply Section -->
-        <section id="apply" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-    <div class="text-center scroll-animate">
-        <h2 class="text-4xl sm:text-5xl font-black">Apply to Participate</h2>
-        <p class="text-lg text-gray-300 mt-4">
-            Interested in sharing your experience? Fill out the short form below to apply.
-        </p>
-    </div>
+        <!-- Detailed Activities -->
+        <section class="px-6 lg:px-12 py-32 bg-white border-t border-gray-200">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-16 scroll-animate">
+                    <span class="font-mono text-sm text-[var(--color-accent)]">02. ACTIVITIES</span>
+                    <h2 class="text-4xl font-black text-gray-900 mt-2">What is Involved?</h2>
+                </div>
 
-    <form 
-        id="apply-form" 
-        action="https://submit-form.com/JhqDT3WNB"
-        method="POST"
-        class="mt-12 space-y-6 scroll-animate"
-    >
-<!-- The redirect link -->
-    <input 
-        type="hidden" 
-        name="_redirect" 
-        value="https://hybrid-research-tum.github.io/Participant-Recruitment/thanks.html" 
-    />
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                <input type="text" name="Name" id="name" class="form-input" required>
-            </div>
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                <input type="email" name="Email" id="email" class="form-input" required>
-            </div>
-        </div>
-        <div>
-            <label for="role" class="block text-sm font-medium text-gray-300 mb-2">Your Role / Job Title</label>
-            <input type="text" name="Role" id="role" class="form-input" placeholder="e.g., UX Designer, Software Engineer" required>
-        </div>
+                <div class="space-y-4">
+                    <!-- Accordion Item 1 (Open styling) -->
+                    <div class="border border-gray-200 p-8 flex flex-col md:flex-row gap-8 items-start scroll-animate">
+                        <div class="bg-gray-100 p-4 rounded-full">
+                            <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">The Mobile Diary</h3>
+                            <p class="text-gray-500 font-mono text-xs uppercase mt-1 mb-4">Commitment: 5 Days (10 min/day)</p>
+                            <p class="text-gray-600 leading-relaxed">
+                                You will receive a daily secure link (via Tally) to answer short questions or upload a photo of your workspace. We use <strong>Formspark & Tally</strong> (European-hosted, GDPR-compliant) to ensure data security.
+                            </p>
+                        </div>
+                    </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-                <label for="location" class="block text-sm font-medium text-gray-300 mb-2">Where are you based?</label>
-                <select id="location" name="Location" class="form-select" required>
-                    <option value="" disabled selected>Select your continent</option>
-                    <option value="North America">North America</option>
-                    <option value="South America">South America</option>
-                    <option value="Europe">Europe</option>
-                    <option value="Africa">Africa</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Australia/Oceania">Australia/Oceania</option>
-                </select>
+                    <!-- Accordion Item 2 -->
+                    <div class="border border-gray-200 p-8 flex flex-col md:flex-row gap-8 items-start scroll-animate">
+                        <div class="bg-gray-100 p-4 rounded-full">
+                            <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">The Interview</h3>
+                            <p class="text-gray-500 font-mono text-xs uppercase mt-1 mb-4">Commitment: 60 Minutes (One-off)</p>
+                            <p class="text-gray-600 leading-relaxed">
+                                A casual, 1-on-1 online interview via Zoom to discuss your experiences in more depth. This happens after the diary phase is complete.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="industry" class="block text-sm font-medium text-gray-300 mb-2">Which industry do you work in?</label>
-                <select id="industry" name="Industry" class="form-select" required>
-                    <option value="" disabled selected>Select your industry</option>
-                    <option value="Design & Creative Industries">Design & Creative Industries</option>
-                    <option value="Technology & Digital">Technology & Digital</option>
-                    <option value="Business & Professional Services">Business & Professional Services</option>
-                    <option value="Media & Content">Media & Content</option>
-                    <option value="Education & Research">Education & Research</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-        </div>
+        </section>
 
-        <div class="space-y-4 pt-4">
-            <span class="block text-lg font-medium text-white mb-2">Confirmation</span>
-            
-            <div class="custom-checkbox">
-                <input type="checkbox" id="check-age" name="Confirmation_18_or_older" value="Yes" class="required-check">
-                <span class="checkbox-visual">
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <label for="check-age">Do you confirm you are 18 or older?</label>
-            </div>
+        <!-- Application Form -->
+        <section id="apply" class="px-6 lg:px-12 py-32 bg-gray-50 border-t border-gray-200">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12 scroll-animate">
+                    <h2 class="text-3xl font-black uppercase tracking-tight">Participant Application</h2>
+                    <p class="text-gray-500 mt-4">Phase 1: Registration & Selection</p>
+                </div>
 
-            <div class="custom-checkbox">
-                <input type="checkbox" id="check-diary" name="Confirmation_Diary_Availability" value="Yes" class="required-check">
-                <span class="checkbox-visual">
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <label for="check-diary">Are you available to participate in a 5-day mobile diary between December and January?</label>
-            </div>
+                <div class="bg-white p-8 lg:p-12 border border-gray-200 shadow-sm scroll-animate">
+                    <form 
+                        id="apply-form" 
+                        action="https://submit-form.com/JhqDT3WNB"
+                        method="POST"
+                        class="space-y-6"
+                    >
+                    <input 
+                        type="hidden" 
+                        name="_redirect" 
+                        value="https://hybrid-research-tum.github.io/Participant-Recruitment/thanks.html" 
+                    />
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-xs font-bold uppercase text-gray-500 mb-2">Full Name</label>
+                                <input type="text" name="Name" id="name" class="form-input" placeholder="e.g. Jane Doe" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-bold uppercase text-gray-500 mb-2">Email</label>
+                                <input type="email" name="Email" id="email" class="form-input" placeholder="jane@example.com" required>
+                            </div>
+                        </div>
 
-            <div class="custom-checkbox">
-                <input type="checkbox" id="check-interview" name="Confirmation_Interview_Willingness" value="Yes" class="required-check">
-                <span class="checkbox-visual">
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <label for="check-interview">Are you willing to participate in a 60-minute online interview?</label>
-            </div>
-        </div>
+                        <div>
+                            <label for="role" class="block text-xs font-bold uppercase text-gray-500 mb-2">Current Role</label>
+                            <input type="text" name="Role" id="role" class="form-input" placeholder="e.g. Senior Architect" required>
+                        </div>
 
-        <div class="pt-6">
-            <button type="submit" id="submit-btn" class="btn-submit" disabled>
-                Submit Application
-            </button>
-            <p class="text-xs text-gray-500 mt-3 text-center">
-                By clicking submit, you consent to the temporary data storage on 
-        <a href="https://formspark.io/legal/gdpr/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-700">
-            Formspark
-        </a>.
-            </p>
-        </div>
-    </form> </section>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="location" class="block text-xs font-bold uppercase text-gray-500 mb-2">Location</label>
+                                <select id="location" name="Location" class="form-select" required>
+                                    <option value="" disabled selected>Select Region...</option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="North America">North America</option>
+                                    <option value="Asia">Asia</option>
+                                    <option value="South America">South America</option>
+                                    <option value="Africa">Africa</option>
+                                    <option value="Oceania">Oceania</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="industry" class="block text-xs font-bold uppercase text-gray-500 mb-2">Industry</label>
+                                <select id="industry" name="Industry" class="form-select" required>
+                                    <option value="" disabled selected>Select Industry...</option>
+                                    <option value="Design">Design & Creative</option>
+                                    <option value="Tech">Technology</option>
+                                    <option value="Research">Research / Education</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 space-y-3">
+                            <p class="text-sm font-bold text-gray-900 mb-4">Mandatory Confirmations</p>
+                            
+                            <div class="custom-checkbox">
+                                <input type="checkbox" id="check-age" name="Confirmation_18_or_older" class="required-check">
+                                <span class="checkbox-visual">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <label for="check-age">I confirm I am 18 years or older.</label>
+                            </div>
+
+                            <div class="custom-checkbox">
+                                <input type="checkbox" id="check-diary" name="Confirmation_Diary_Availability" class="required-check">
+                                <span class="checkbox-visual">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <label for="check-diary">I am available for the 5-day mobile diary.</label>
+                            </div>
+
+                            <div class="custom-checkbox">
+                                <input type="checkbox" id="check-interview" name="Confirmation_Interview_Willingness" class="required-check">
+                                <span class="checkbox-visual">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <label for="check-interview">I am willing to participate in a 60 min interview.</label>
+                            </div>
+                        </div>
+
+                        <div class="pt-8">
+                            <button type="submit" id="submit-btn" class="btn-submit" disabled>
+                                Submit Application
+                            </button>
+                            <p class="text-xs text-gray-400 mt-4 text-center leading-relaxed">
+                                Your data is stored locally and securely. It will be permanently destroyed 6 months after the study concludes.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
-        <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="text-center text-gray-500 border-t border-gray-800 pt-8">
-                <p>&copy; 2025 Technical University of Munich | Chair of Integrated Product Design (IPD)</p>
-                <p class="text-sm mt-1">All data will be handled confidentially according to GDPR for research purposes only.</p>
+        <footer class="bg-gray-900 text-white px-6 lg:px-12 py-16">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Technical University of Munich</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Chair of Integrated Product Design<br>
+                        Arcisstr. 21<br>
+                        80333 Munich, Germany
+                    </p>
+                </div>
+                <div class="text-right">
+                    <div class="mb-4">
+                        <span class="inline-block w-8 h-8 bg-white rounded-full opacity-10"></span>
+                        <span class="inline-block w-8 h-8 bg-[var(--color-accent)] rounded-full ml-[-10px]"></span>
+                    </div>
+                    <p class="text-gray-500 text-xs">
+                        &copy; 2025 TUM IPD.<br>All rights reserved.
+                    </p>
+                </div>
             </div>
         </footer>
 
     </main>
 
     <script>
-        // --- Scroll Animation ---
+        // --- Scroll Animation Observer ---
         const scrollAnimate = () => {
             const elements = document.querySelectorAll('.scroll-animate');
             const observer = new IntersectionObserver((entries) => {
@@ -550,7 +562,8 @@
                     }
                 });
             }, {
-                threshold: 0.1
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
             });
 
             elements.forEach(el => {
@@ -558,7 +571,7 @@
             });
         };
 
-        // --- Form Validation ---
+        // --- Form Validation Logic ---
         const formValidation = () => {
             const form = document.getElementById('apply-form');
             if (!form) return;
@@ -580,33 +593,13 @@
                 check.addEventListener('change', validate);
             });
 
-            // Handle mailto: behavior
-            form.addEventListener('submit', function(e) {
-                // We let the mailto: action proceed, but just in case
-                // we can add extra prep here if needed.
-                // The main validation is handled by the disabled button.
-                if (submitBtn.disabled) {
-                    e.preventDefault();
-                    console.log("Form submission blocked. Please check all confirmations.");
-                }
-            });
-
-            validate(); // Initial check
+            validate();
         };
-        
-        // --- Run scripts on load ---
+
         document.addEventListener('DOMContentLoaded', () => {
             scrollAnimate();
             formValidation();
         });
     </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
