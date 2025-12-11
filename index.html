@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hybrid Work Study | TUM Munich</title>
+    <title>Application Received | TUM Munich</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Themes & Variables --- */
+        /* --- Themes & Variables (Matched to Main Site) --- */
         :root {
             --color-bg: #FFF9F2; /* Warm Cream */
             --color-surface: #FFFFFF;
@@ -27,17 +27,16 @@
             color: var(--color-text);
             overflow-x: hidden;
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- THE NEW ELEGANT GRID --- */
-        /* This SVG creates the "Squircle" tile effect. 
-           It draws a rectangle with heavy rounding (rx='16') inside a square viewbox.
-           The gaps between the rounded corners create the "star" shape at the intersections.
-        */
+        /* --- THE NEW ELEGANT GRID (Pale Version) --- */
         .bg-tile-grid {
             background-color: var(--color-bg);
-            background-size: 50px 50px; /* Adjust size of tiles here */
-            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='49' height='49' rx='16' ry='16' fill='none' stroke='%23111111' stroke-width='0.4' opacity='0.6' /%3E%3C/svg%3E");
+            background-size: 50px 50px;
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='49' height='49' rx='16' ry='16' fill='none' stroke='%23111111' stroke-width='0.4' opacity='0.15' /%3E%3C/svg%3E");
         }
 
         /* --- Typography --- */
@@ -45,14 +44,15 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* --- Content Containers (The "Islands") --- */
+        /* --- Content Containers --- */
         .content-island {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-large);
-            padding: 2rem;
+            padding: 3rem;
             position: relative;
             z-index: 10;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
         /* --- Animations --- */
@@ -108,362 +108,8 @@
             background-color: var(--color-text);
             color: #FFFFFF;
         }
-
-        /* Form Elements */
-        .form-input, .form-select {
-            background-color: #FFFFFF;
-            border: 1px solid #D1D5DB;
-            color: var(--color-text);
-            border-radius: 1rem;
-            padding: 1rem 1.5rem;
-            width: 100%;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s ease;
-        }
-
-        .form-input:focus, .form-select:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 4px rgba(43, 48, 255, 0.1);
-        }
-
-        .btn-submit {
-            background-color: var(--color-text);
-            color: #FFFFFF;
-            padding: 1.2rem 2rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-radius: var(--radius-pill);
-            transition: all 0.2s ease;
-            width: 100%;
-            border: 1px solid var(--color-text);
-            cursor: pointer;
-        }
-
-        .btn-submit:hover:not(:disabled) {
-            background-color: var(--color-accent);
-            border-color: var(--color-accent);
-            transform: translateY(-2px);
-        }
         
-        /* Floating Menu */
-        .floating-menu {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: #FFF;
-            border: 1px solid #111;
-            padding: 0.75rem 1.5rem;
-            border-radius: 999px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .floating-menu:hover {
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body class="antialiased bg-tile-grid pb-20">
-
-    <a href="#apply" class="floating-menu shadow-lg">
-        Participate <span class="text-xl leading-none ml-1">+</span>
-    </a>
-
-    <div class="lg:hidden p-4 text-center">
-        <div class="inline-block bg-white border border-gray-900 rounded-full px-6 py-2 text-xs font-bold tracking-widest uppercase shadow-sm">
-            TUM — IPD
-        </div>
-    </div>
-
-    <main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-12 space-y-8">
-
-        <section class="content-island min-h-[85vh] flex flex-col justify-center items-center text-center relative overflow-hidden">
-            <div class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-            <div class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-
-            <div class="relative z-10 max-w-4xl mx-auto px-4">
-                <div class="inline-block border border-gray-900 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-8 bg-white scroll-animate">
-                    Winter 2025 / 2026
-                </div>
-                
-                <h1 class="text-5xl sm:text-7xl lg:text-9xl font-medium text-gray-900 leading-[0.9] tracking-tight mb-8 scroll-animate" style="transition-delay: 100ms;">
-                    The Future of <br>
-                    <span class="text-[var(--color-accent)] italic">Home Office.</span>
-                </h1>
-                
-                <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-12 scroll-animate" style="transition-delay: 200ms;">
-                    A study on hybrid environments, spatial obstacles, and well-being by the <strong class="text-black">Technical University of Munich</strong>.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center scroll-animate" style="transition-delay: 300ms;">
-                    <a href="#apply" class="btn-primary">Become a Participant</a>
-                    <a href="#details" class="btn-secondary">Read Prospectus</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="content-island !py-4 !px-0 overflow-hidden flex items-center bg-black text-white border-none">
-            <div class="flex whitespace-nowrap gap-12 text-sm font-mono uppercase tracking-widest animate-[marquee_20s_linear_infinite]">
-                <div class="flex gap-12 min-w-full justify-around">
-                     <span>REMOTE</span> <span>✦</span> 
-                     <span>Hybrid Work</span> <span>✦</span> 
-                     <span>Global</span> <span>✦</span> 
-                     <span>Design Study</span> <span>✦</span> 
-                     <span>Well-being</span> <span>✦</span> 
-                     <span>Creative Spaces</span> <span>✦</span> 
-                     <span>Productivity</span> <span>✦</span> 
-                     <span>Future of Work</span> <span>✦</span> 
-                </div>
-                <div class="flex gap-12 min-w-full justify-around" aria-hidden="true">
-                    <span>REMOTE</span> <span>✦</span> 
-                    <span>Hybrid Work</span> <span>✦</span> 
-                    <span>Global</span> <span>✦</span> 
-                    <span>Design Study</span> <span>✦</span> 
-                    <span>Well-being</span> <span>✦</span> 
-                    <span>Creative Spaces</span> <span>✦</span> 
-                    <span>Productivity</span> <span>✦</span> 
-                    <span>Future of Work</span> <span>✦</span> 
-               </div>
-            </div>
-        </div>
-
-        <section id="details" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div class="lg:col-span-5 content-island flex flex-col justify-between scroll-animate min-h-[300px] bg-[var(--color-accent)] text-white !border-transparent">
-                <h2 class="text-4xl lg:text-5xl font-medium leading-tight">A Study on <br><span class="italic opacity-80">Space & Reluctance</span></h2>
-                <div class="mt-8">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-            </div>
-            
-            <div class="lg:col-span-7 content-island flex flex-col justify-center scroll-animate" style="transition-delay: 150ms;">
-                <div class="space-y-6 text-lg text-gray-600 font-light">
-                    <p class="text-xl text-black font-medium leading-snug">
-                        We are studying the reality of hybrid work—the good, the bad, and the glitchy.
-                    </p>
-                    <p>
-                        Driven by recent data indicating that nearly 60% of remote-capable workers now prefer hybrid or fully remote arrangements, this research investigates the specific 'spatial obstacles' of the modern workplace. We aim to understand exactly why the home office is increasingly preferred, analyzing which attributes of corporate innovation spaces are now rejected as dysfunctional or unappealing.
-                    </p>
-                    
-                    <!-- Modified grid to single column to maintain visual composition after removing partner -->
-                    <div class="grid grid-cols-1 gap-4 pt-6">
-                         <div class="p-6 bg-[#F3F4F6] rounded-2xl">
-                             <div class="text-xs font-bold text-[var(--color-accent)] uppercase mb-2 tracking-widest">Research Conducted By</div>
-                             <div class="font-serif font-bold text-lg text-gray-900 leading-tight">Technical University of Munich</div>
-                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-island scroll-animate">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
-                <div>
-                    <span class="inline-block px-3 py-1 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wider mb-4">01. Procedure</span>
-                    <h2 class="text-4xl sm:text-5xl font-medium text-gray-900 tracking-tight">Timeline & Expectations</h2>
-                </div>
-                <p class="text-gray-500 max-w-sm mt-6 md:mt-0 text-right">
-                    Structured into three phases to minimize active time commitment.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-8 bg-[#F3F4F6] rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
-                    <span class="block text-6xl font-serif text-[var(--color-accent)] mb-6 italic">I</span>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Registration</h3>
-                    <p class="text-gray-600 text-sm mb-4">Complete the brief application form below.</p>
-                    <div class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase">Open</div>
-                </div>
-
-                <div class="p-8 bg-[#F3F4F6] rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
-                    <span class="block text-6xl font-serif text-gray-300 mb-6 italic">II</span>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Onboarding</h3>
-                    <p class="text-gray-600 text-sm mb-4">Receive unique ID (e.g., HR_001) for 100% anonymity.</p>
-                    <div class="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs font-bold uppercase">DEC</div>
-                </div>
-
-                <div class="p-8 bg-[#F3F4F6] rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
-                    <span class="block text-6xl font-serif text-gray-300 mb-6 italic">III</span>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">The Study</h3>
-                    <p class="text-gray-600 text-sm mb-4">5-Day Mobile Diary (10 min/day) + One 60 min interview.</p>
-                    <div class="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs font-bold uppercase">Jan</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-             <div class="content-island scroll-animate flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-3xl font-serif font-medium text-gray-900 mb-2">The Mobile Diary</h3>
-                    <p class="text-gray-600 leading-relaxed mb-8">
-                        You will receive a daily secure link to answer short questions or upload photos of your workspace. Powered by <a href="https://tally.so/help/gdpr" target="_blank" class="underline hover:text-gray-900 transition-colors">Tally.</a>
-                    </p>
-                </div>
-                <div class="border-t border-gray-100 pt-4 flex justify-between items-center">
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Duration</span>
-                    <span class="font-bold">5 Days (5 min/day)</span>
-                </div>
-             </div>
-
-             <div class="content-island scroll-animate flex flex-col justify-between" style="transition-delay: 100ms;">
-                <div>
-                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
-                    </div>
-                    <h3 class="text-3xl font-serif font-medium text-gray-900 mb-2">The Interview</h3>
-                    <p class="text-gray-600 leading-relaxed mb-8">
-                        A casual, 1-on-1 online interview via Zoom to discuss your experiences in more depth. This happens after the diary phase.
-                    </p>
-                </div>
-                <div class="border-t border-gray-100 pt-4 flex justify-between items-center">
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Duration</span>
-                    <span class="font-bold">60 Minutes (One-off)</span>
-                </div>
-             </div>
-        </section>
-
-        <section id="apply" class="content-island scroll-animate !p-0 overflow-hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
-                <div class="lg:col-span-4 bg-gray-50 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <h2 class="text-4xl font-serif font-medium mb-4">Join the<br>Research</h2>
-                        <p class="text-gray-500">Phase 1: Registration & Selection</p>
-                    </div>
-                    <div class="hidden lg:block">
-                        <div class="text-sm font-bold text-[var(--color-accent)] mb-2">PRIVACY NOTE</div>
-                        <p class="text-xs text-gray-400 leading-relaxed">
-                            By clicking submit, you consent to the temporary data storage on <a href="https://formspark.io/legal/gdpr/" target="_blank" class="underline hover:text-gray-600 transition-colors">Formspark</a>.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-8 p-8 lg:p-12">
-                    <form 
-                        id="apply-form" 
-                        action="https://submit-form.com/JhqDT3WNB"
-                        method="POST"
-                        class="space-y-6 max-w-2xl mx-auto"
-                    >
-                    <input type="hidden" name="_redirect" value="https://hybrid-research-tum.github.io/Participant-Recruitment/thanks.html" />
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Full Name</label>
-                                <input type="text" name="Name" id="name" class="form-input" placeholder="e.g. Jane Doe" required>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Email</label>
-                                <input type="email" name="Email" id="email" class="form-input" placeholder="jane@example.com" required>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="role" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Current Role</label>
-                            <input type="text" name="Role" id="role" class="form-input" placeholder="e.g. Senior Architect" required>
-                        </div>
-                        
-                        <!-- NEW EMPLOYMENT STATUS FIELD -->
-                        <div>
-                            <label for="employment-status" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Employment Status</label>
-                            <select id="employment-status" name="Employment_Status" class="form-select" required>
-                                <option value="" disabled selected>Select Status...</option>
-                                <option value="Full-time">Full-time Employee (Standard 35-40+ hours/week)</option>
-                                <option value="Part-time">Part-time Employee (Less than 35 hours/week)</option>
-                                <option value="Self-employed">Self-employed / Freelancer / Independent Contractor</option>
-                                <option value="Student">Working Student / Student Employee</option>
-                                <option value="Intern">Intern / Trainee / Apprentice</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <!-- Hidden input for "Other" specification -->
-                            <input type="text" name="Employment_Status_Other" id="employment-status-other" class="form-input mt-3 hidden" placeholder="Please specify your employment status...">
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="location" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Location</label>
-                                <select id="location" name="Location" class="form-select" required>
-                                    <option value="" disabled selected>Select Region...</option>
-                                    <option value="Europe">Europe</option>
-                                    <option value="North America">North America</option>
-                                    <option value="Asia">Asia</option>
-                                    <option value="South America">South America</option>
-                                    <option value="Africa">Africa</option>
-                                    <option value="Oceania">Oceania</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="industry" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Industry</label>
-                                <select id="industry" name="Industry" class="form-select" required>
-                                    <option value="" disabled selected>Select Industry...</option>
-                                    <option value="Design">Design & Creative</option>
-                                    <option value="Tech">Technology</option>
-                                    <option value="Research">Research / Education</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="pt-6 space-y-3">
-                            <p class="text-sm font-bold text-gray-900 mb-2 ml-2">Confirmations</p>
-                            
-                            <label class="flex gap-4 items-center cursor-pointer p-2">
-                                <input type="checkbox" id="check-age" name="Confirmation_18_or_older" class="required-check w-5 h-5 accent-[var(--color-accent)]">
-                                <span class="text-sm">I confirm I am 18 years or older.</span>
-                            </label>
-
-                            <label class="flex gap-4 items-center cursor-pointer p-2">
-                                <input type="checkbox" id="check-diary" name="Confirmation_Diary_Availability" class="required-check w-5 h-5 accent-[var(--color-accent)]">
-                                <span class="text-sm">I am available for the 5-day mobile diary.</span>
-                            </label>
-
-                            <label class="flex gap-4 items-center cursor-pointer p-2">
-                                <input type="checkbox" id="check-interview" name="Confirmation_Interview_Willingness" class="required-check w-5 h-5 accent-[var(--color-accent)]">
-                                <span class="text-sm">I am willing to participate in a 60 min interview.</span>
-                            </label>
-                        </div>
-
-                        <div class="pt-8">
-                            <button type="submit" id="submit-btn" class="btn-submit shadow-xl" disabled>
-                                Submit Application
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <footer class="content-island !bg-black !border-black text-white py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-center md:text-left">
-                <h4 class="font-serif font-bold text-xl mb-2">TUM School of Engineering and Design - Chair of Integrated Product Design</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Arcisstr. 21<br>
-                    80333 Munich, Germany
-                </p>
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="block w-3 h-3 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
-                <span class="text-xs text-gray-500 font-mono uppercase tracking-widest">&copy; 2025 ALL RIGHTS RESERVED.</span>
-            </div>
-        </footer>
-
-    </main>
-
-    <style>
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
+        /* blob animation */
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
             33% { transform: translate(30px, -50px) scale(1.1); }
@@ -477,59 +123,109 @@
             animation-delay: 2s;
         }
     </style>
+</head>
+<body class="antialiased bg-tile-grid">
+
+    <div class="lg:hidden p-4 text-center">
+        <div class="inline-block bg-white border border-gray-900 rounded-full px-6 py-2 text-xs font-bold tracking-widest uppercase shadow-sm">
+            TUM — IPD
+        </div>
+    </div>
+
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+        
+        <div class="absolute top-[10%] right-[10%] w-[400px] h-[400px] bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob pointer-events-none"></div>
+        <div class="absolute bottom-[10%] left-[10%] w-[400px] h-[400px] bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000 pointer-events-none"></div>
+
+        <div class="content-island max-w-2xl w-full text-center scroll-animate relative">
+            
+            <div class="flex justify-center mb-8">
+                <div class="w-20 h-20 rounded-full border-2 border-[var(--color-accent)] flex items-center justify-center bg-blue-50/50">
+                    <svg class="w-10 h-10 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-medium text-gray-900 leading-tight mb-6">
+                Application <br>
+                <span class="text-[var(--color-accent)] italic">Received.</span>
+            </h1>
+
+            <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+                Thank you for volunteering for the TUM Hybrid Work Study.<br class="hidden sm:block"> We have successfully received your details.
+            </p>
+
+            <div class="bg-[#F3F4F6] rounded-2xl p-8 text-left mb-10 border border-gray-200">
+                <h3 class="text-xs font-bold uppercase text-gray-500 mb-6 tracking-widest border-b border-gray-300 pb-2">What happens next?</h3>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-3">
+                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg shrink-0">01.</span> 
+                        <span class="text-gray-700 pt-0.5">
+                            <strong class="block text-gray-900 font-semibold mb-1">Selection & Review</strong>
+                            We are currently curating the participant cohort. You will receive a notification regarding your application status by December 22nd.
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg shrink-0">02.</span> 
+                        <span class="text-gray-700 pt-0.5">
+                            <strong class="block text-gray-900 font-semibold mb-1">Onboarding</strong>
+                            Selected participants will receive an email containing the Data Privacy Policy and Consent Form for review and signature.
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg shrink-0">03.</span> 
+                        <span class="text-gray-700 pt-0.5">
+                            <strong class="block text-gray-900 font-semibold mb-1">Flexible Start</strong>
+                            Once signed, we will send your unique Participant Code. You may then choose to start your 5-day mobile diary on any date that suits your schedule between then and the end of January.
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="mt-8 pt-6 border-t border-gray-300 text-sm text-gray-600">
+                    <h4 class="font-bold text-gray-800 mb-3">Important Notes</h4>
+                    <ul class="space-y-3 pl-1">
+                        <li class="flex gap-2">
+                            <span class="text-[var(--color-accent)] font-bold">•</span>
+                            <span>Please check your <strong>spam/junk folder</strong> if you do not hear from us by Dec 22nd.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-[var(--color-accent)] font-bold">•</span>
+                            <span>This study is limited to <strong>15–20 participants</strong> to ensure detailed qualitative analysis. If we reach capacity, you may be placed on a waitlist for future rounds.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-[var(--color-accent)] font-bold">•</span>
+                            <span>Your participation remains <strong>voluntary</strong>. Even after signing up, you may withdraw your interest at any time.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://hybrid-research-tum.github.io/Participant-Recruitment/" class="btn-primary shadow-lg">Return to Home</a>
+                <a href="mailto:yi.zhou@tum.de" class="btn-secondary">Contact Us</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="content-island !bg-black !border-black text-white py-8 px-8 mx-4 sm:mx-8 mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-center md:text-left">
+            <h4 class="font-serif font-bold text-lg">TUM School of Engineering and Design - Chair of Integrated Product Design</h4>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="block w-2 h-2 rounded-full bg-[var(--color-accent)]"></span>
+            <span class="text-[10px] text-gray-500 font-mono uppercase tracking-widest">&copy; 2025 ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
 
     <script>
-        const scrollAnimate = () => {
-            const elements = document.querySelectorAll('.scroll-animate');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            });
-            elements.forEach(el => observer.observe(el));
-        };
-
-        const formValidation = () => {
-            const submitBtn = document.getElementById('submit-btn');
-            const requiredChecks = document.querySelectorAll('.required-check');
-            
-            // Logic for Employment Status Other field
-            const employmentSelect = document.getElementById('employment-status');
-            const otherInput = document.getElementById('employment-status-other');
-            
-            if (employmentSelect && otherInput) {
-                employmentSelect.addEventListener('change', (e) => {
-                    if (e.target.value === 'Other') {
-                        otherInput.classList.remove('hidden');
-                        otherInput.required = true;
-                        otherInput.focus();
-                    } else {
-                        otherInput.classList.add('hidden');
-                        otherInput.required = false;
-                        otherInput.value = '';
-                    }
-                });
-            }
-
-            const validate = () => {
-                let allChecked = true;
-                requiredChecks.forEach(check => {
-                    if (!check.checked) allChecked = false;
-                });
-                submitBtn.disabled = !allChecked;
-            };
-
-            requiredChecks.forEach(check => check.addEventListener('change', validate));
-        };
-
         document.addEventListener('DOMContentLoaded', () => {
-            scrollAnimate();
-            formValidation();
+            const elements = document.querySelectorAll('.scroll-animate');
+            // Small delay to ensure smooth entry
+            setTimeout(() => {
+                elements.forEach(el => el.classList.add('is-visible'));
+            }, 100);
         });
     </script>
 </body>
