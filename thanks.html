@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* --- Themes & Variables (Matched to Main Site) --- */
@@ -126,7 +126,6 @@
 </head>
 <body class="antialiased bg-tile-grid">
 
-    <!-- Mobile Header Tag -->
     <div class="lg:hidden p-4 text-center">
         <div class="inline-block bg-white border border-gray-900 rounded-full px-6 py-2 text-xs font-bold tracking-widest uppercase shadow-sm">
             TUM — IPD
@@ -135,14 +134,11 @@
 
     <main class="flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
         
-        <!-- Animated Blobs Background -->
         <div class="absolute top-[10%] right-[10%] w-[400px] h-[400px] bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob pointer-events-none"></div>
         <div class="absolute bottom-[10%] left-[10%] w-[400px] h-[400px] bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000 pointer-events-none"></div>
 
-        <!-- Main Content Card -->
         <div class="content-island max-w-2xl w-full text-center scroll-animate relative">
             
-            <!-- Checkmark Icon -->
             <div class="flex justify-center mb-8">
                 <div class="w-20 h-20 rounded-full border-2 border-[var(--color-accent)] flex items-center justify-center bg-blue-50/50">
                     <svg class="w-10 h-10 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,41 +153,65 @@
             </h1>
 
             <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-                Thank you for your interest in the Hybrid Work Study.<br class="hidden sm:block"> We have successfully received your details.
+                Thank you for volunteering for the TUM Hybrid Work Study.<br class="hidden sm:block"> We have successfully received your details.
             </p>
 
-            <!-- Next Steps Box -->
             <div class="bg-[#F3F4F6] rounded-2xl p-8 text-left mb-10 border border-gray-200">
-                <h3 class="text-xs font-bold uppercase text-gray-500 mb-4 tracking-widest border-b border-gray-300 pb-2">What happens next?</h3>
-                <ul class="space-y-4">
+                <h3 class="text-xs font-bold uppercase text-gray-500 mb-6 tracking-widest border-b border-gray-300 pb-2">What happens next?</h3>
+                <ul class="space-y-6">
                     <li class="flex items-start gap-3">
-                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg">01.</span> 
-                        <span class="text-gray-700 pt-0.5">We will review your application within 48 hours.</span>
+                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg shrink-0">01.</span> 
+                        <span class="text-gray-700 pt-0.5">
+                            <strong class="block text-gray-900 font-semibold mb-1">Selection & Review</strong>
+                            We are currently curating the participant cohort. You will receive a notification regarding your application status by December 22nd.
+                        </span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg">02.</span> 
-                        <span class="text-gray-700 pt-0.5">You will receive an email with consent form.</span>
+                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg shrink-0">02.</span> 
+                        <span class="text-gray-700 pt-0.5">
+                            <strong class="block text-gray-900 font-semibold mb-1">Onboarding</strong>
+                            Selected participants will receive an email containing the Data Privacy Policy and Consent Form for review and signature.
+                        </span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg">03.</span> 
-                        <span class="text-gray-700 pt-0.5">Once signed, we will send you the participation code.</span>
+                        <span class="font-serif font-bold text-[var(--color-accent)] text-lg shrink-0">03.</span> 
+                        <span class="text-gray-700 pt-0.5">
+                            <strong class="block text-gray-900 font-semibold mb-1">Flexible Start</strong>
+                            Once signed, we will send your unique Participant Code. You may then choose to start your 5-day mobile diary on any date that suits your schedule between then and the end of January.
+                        </span>
                     </li>
                 </ul>
+
+                <div class="mt-8 pt-6 border-t border-gray-300 text-sm text-gray-600">
+                    <h4 class="font-bold text-gray-800 mb-3">Important Notes</h4>
+                    <ul class="space-y-3 pl-1">
+                        <li class="flex gap-2">
+                            <span class="text-[var(--color-accent)] font-bold">•</span>
+                            <span>Please check your <strong>spam/junk folder</strong> if you do not hear from us by Dec 22nd.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-[var(--color-accent)] font-bold">•</span>
+                            <span>This study is limited to <strong>15–20 participants</strong> to ensure detailed qualitative analysis. If we reach capacity, you may be placed on a waitlist for future rounds.</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-[var(--color-accent)] font-bold">•</span>
+                            <span>Your participation remains <strong>voluntary</strong>. Even after signing up, you may withdraw your interest at any time.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="https://hybrid-research-tum.github.io/Participant-Recruitment/" class="btn-primary shadow-lg">Return to Home</a>
-                <a href="yi.zhou@tum.de" class="btn-secondary">Contact Us</a>
+                <a href="mailto:yi.zhou@tum.de" class="btn-secondary">Contact Us</a>
             </div>
 
         </div>
     </main>
 
-    <!-- Simplified Footer -->
     <footer class="content-island !bg-black !border-black text-white py-8 px-8 mx-4 sm:mx-8 mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="text-center md:text-left">
-            <h4 class="font-serif font-bold text-lg">TUM IPD</h4>
+            <h4 class="font-serif font-bold text-lg">TUM School of Engineering and Design - Chair of Integrated Product Design</h4>
         </div>
         <div class="flex items-center gap-2">
             <span class="block w-2 h-2 rounded-full bg-[var(--color-accent)]"></span>
