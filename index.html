@@ -201,7 +201,7 @@
                 </h1>
                 
                 <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-12 scroll-animate" style="transition-delay: 200ms;">
-                    A study on space, reluctance, and well-being by the <strong class="text-black">Technical University of Munich</strong> in collaboration with <strong class="text-black">Never Too Small</strong>.
+                    A study on hybrid environments, spatial obstacles, and well-being by the <strong class="text-black">Technical University of Munich</strong>.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center scroll-animate" style="transition-delay: 300ms;">
@@ -253,14 +253,11 @@
                         Motivated by data indicating that 60% of remote-capable workers specifically prefer a hybrid arrangement, this research examines which aspects of the office are rejected as dysfunctional or unappealing.
                     </p>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                    <!-- Modified grid to single column to maintain visual composition after removing partner -->
+                    <div class="grid grid-cols-1 gap-4 pt-6">
                          <div class="p-6 bg-[#F3F4F6] rounded-2xl">
-                             <div class="text-xs font-bold text-[var(--color-accent)] uppercase mb-2 tracking-widest">Lead Partner</div>
+                             <div class="text-xs font-bold text-[var(--color-accent)] uppercase mb-2 tracking-widest">Research Conducted By</div>
                              <div class="font-serif font-bold text-lg text-gray-900 leading-tight">Technical University of Munich</div>
-                         </div>
-                         <div class="p-6 bg-[#F3F4F6] rounded-2xl">
-                             <div class="text-xs font-bold text-[var(--color-accent)] uppercase mb-2 tracking-widest">Media Partner</div>
-                             <div class="font-serif font-bold text-lg text-gray-900 leading-tight">Never Too Small</div>
                          </div>
                     </div>
                 </div>
@@ -290,14 +287,14 @@
                     <span class="block text-6xl font-serif text-gray-300 mb-6 italic">II</span>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Onboarding</h3>
                     <p class="text-gray-600 text-sm mb-4">Receive unique ID (e.g., HR_001) for 100% anonymity.</p>
-                    <div class="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs font-bold uppercase">Upcoming</div>
+                    <div class="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs font-bold uppercase">DEC</div>
                 </div>
 
                 <div class="p-8 bg-[#F3F4F6] rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
                     <span class="block text-6xl font-serif text-gray-300 mb-6 italic">III</span>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">The Study</h3>
                     <p class="text-gray-600 text-sm mb-4">5-Day Mobile Diary (10 min/day) + One 60 min interview.</p>
-                    <div class="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs font-bold uppercase">Dec — Jan</div>
+                    <div class="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs font-bold uppercase">Jan</div>
                 </div>
             </div>
         </section>
@@ -310,12 +307,12 @@
                     </div>
                     <h3 class="text-3xl font-serif font-medium text-gray-900 mb-2">The Mobile Diary</h3>
                     <p class="text-gray-600 leading-relaxed mb-8">
-                        You will receive a daily secure link to answer short questions or upload a photo of your workspace. Powered by Formspark & Tally.
+                        You will receive a daily secure link to answer short questions or upload a photo of your workspace. Powered by <a href="https://tally.so/help/gdpr" target="_blank" class="underline hover:text-gray-900 transition-colors">Tally</a>.
                     </p>
                 </div>
                 <div class="border-t border-gray-100 pt-4 flex justify-between items-center">
                     <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Duration</span>
-                    <span class="font-bold">5 Days (10 min/day)</span>
+                    <span class="font-bold">5 Days (5 min/day)</span>
                 </div>
              </div>
 
@@ -374,6 +371,22 @@
                         <div>
                             <label for="role" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Current Role</label>
                             <input type="text" name="Role" id="role" class="form-input" placeholder="e.g. Senior Architect" required>
+                        </div>
+                        
+                        <!-- NEW EMPLOYMENT STATUS FIELD -->
+                        <div>
+                            <label for="employment-status" class="block text-xs font-bold uppercase text-gray-500 mb-2 ml-2">Employment Status</label>
+                            <select id="employment-status" name="Employment_Status" class="form-select" required>
+                                <option value="" disabled selected>Select Status...</option>
+                                <option value="Full-time">Full-time Employee (Standard 35-40+ hours/week)</option>
+                                <option value="Part-time">Part-time Employee (Less than 35 hours/week)</option>
+                                <option value="Self-employed">Self-employed / Freelancer / Independent Contractor</option>
+                                <option value="Student">Working Student / Student Employee</option>
+                                <option value="Intern">Intern / Trainee / Apprentice</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <!-- Hidden input for "Other" specification -->
+                            <input type="text" name="Employment_Status_Other" id="employment-status-other" class="form-input mt-3 hidden" placeholder="Please specify your employment status...">
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -485,6 +498,24 @@
             const submitBtn = document.getElementById('submit-btn');
             const requiredChecks = document.querySelectorAll('.required-check');
             
+            // Logic for Employment Status Other field
+            const employmentSelect = document.getElementById('employment-status');
+            const otherInput = document.getElementById('employment-status-other');
+            
+            if (employmentSelect && otherInput) {
+                employmentSelect.addEventListener('change', (e) => {
+                    if (e.target.value === 'Other') {
+                        otherInput.classList.remove('hidden');
+                        otherInput.required = true;
+                        otherInput.focus();
+                    } else {
+                        otherInput.classList.add('hidden');
+                        otherInput.required = false;
+                        otherInput.value = '';
+                    }
+                });
+            }
+
             const validate = () => {
                 let allChecked = true;
                 requiredChecks.forEach(check => {
