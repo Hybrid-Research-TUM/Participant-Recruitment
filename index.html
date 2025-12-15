@@ -135,16 +135,30 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             border-radius: var(--radius-pill);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease; /* Increased transition time for color change */
             width: 100%;
             border: 1px solid var(--color-text);
             cursor: pointer;
         }
-
-        .btn-submit:hover:not(:disabled) {
+        
+        /* New class for when the button is ready to submit */
+        .btn-submit.is-ready {
             background-color: var(--color-accent);
             border-color: var(--color-accent);
+            box-shadow: 0 4px 15px -5px rgba(43, 48, 255, 0.4);
+        }
+
+        .btn-submit:hover:not(:disabled) {
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(43, 48, 255, 0.4);
+        }
+
+        .btn-submit:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+            /* Ensure disabled button has no hover effect */
+            transform: none !important;
+            box-shadow: none !important;
         }
         
         /* Floating Menu */
@@ -415,19 +429,19 @@
                         </div>
 
                         <div class="pt-6 space-y-3">
-                            <p class="text-sm font-bold text-gray-900 mb-2 ml-2">Confirmations</p>
+                            <p class="text-sm font-bold text-gray-900 mb-2 ml-2">Confirmations (All three required)</p>
                             
-                            <label class="flex gap-4 items-center cursor-pointer p-2">
+                            <label class="flex gap-4 items-center cursor-pointer p-2 rounded-xl border border-transparent transition-colors hover:bg-gray-50">
                                 <input type="checkbox" id="check-age" name="Confirmation_18_or_older" class="required-check w-5 h-5 accent-[var(--color-accent)]">
                                 <span class="text-sm">I confirm I am 18 years or older.</span>
                             </label>
 
-                            <label class="flex gap-4 items-center cursor-pointer p-2">
+                            <label class="flex gap-4 items-center cursor-pointer p-2 rounded-xl border border-transparent transition-colors hover:bg-gray-50">
                                 <input type="checkbox" id="check-diary" name="Confirmation_Diary_Availability" class="required-check w-5 h-5 accent-[var(--color-accent)]">
                                 <span class="text-sm">I am available for the 5-day mobile diary.</span>
                             </label>
 
-                            <label class="flex gap-4 items-center cursor-pointer p-2">
+                            <label class="flex gap-4 items-center cursor-pointer p-2 rounded-xl border border-transparent transition-colors hover:bg-gray-50">
                                 <input type="checkbox" id="check-interview" name="Confirmation_Interview_Willingness" class="required-check w-5 h-5 accent-[var(--color-accent)]">
                                 <span class="text-sm">I am willing to participate in a 60 min interview.</span>
                             </label>
@@ -437,6 +451,10 @@
                             <button type="submit" id="submit-btn" class="btn-submit shadow-xl" disabled>
                                 Submit Application
                             </button>
+                            <!-- Notification area for submission error -->
+                            <div id="confirmation-error-message" class="mt-4 text-center text-red-600 text-sm font-medium opacity-0 transition-opacity duration-300">
+                                Please check all three confirmation boxes above to enable submission.
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -497,6 +515,8 @@
         const formValidation = () => {
             const submitBtn = document.getElementById('submit-btn');
             const requiredChecks = document.querySelectorAll('.required-check');
+            const errorMessage = document.getElementById('confirmation-error-message');
+            const form = document.getElementById('apply-form');
             
             // Logic for Employment Status Other field
             const employmentSelect = document.getElementById('employment-status');
@@ -521,10 +541,36 @@
                 requiredChecks.forEach(check => {
                     if (!check.checked) allChecked = false;
                 });
+                
                 submitBtn.disabled = !allChecked;
+
+                // Toggle the 'is-ready' class for color change
+                if (allChecked) {
+                    submitBtn.classList.add('is-ready');
+                    errorMessage.classList.add('opacity-0');
+                } else {
+                    submitBtn.classList.remove('is-ready');
+                }
             };
 
+            // Add event listeners to checkboxes and the form
             requiredChecks.forEach(check => check.addEventListener('change', validate));
+
+            // Initial validation call
+            validate(); 
+
+            // Handle click on disabled button to show error message (better UX than a silent fail)
+            form.addEventListener('submit', (e) => {
+                if (submitBtn.disabled) {
+                    e.preventDefault(); // Stop the submission
+                    // Show the notification message
+                    errorMessage.classList.remove('opacity-0');
+                    // Hide the message after 3 seconds
+                    setTimeout(() => {
+                        errorMessage.classList.add('opacity-0');
+                    }, 3000);
+                }
+            });
         };
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -534,4 +580,3 @@
     </script>
 </body>
 </html>
-
